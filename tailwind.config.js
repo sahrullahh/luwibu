@@ -1,0 +1,14 @@
+module.exports = {
+  content: ["./public/**/*.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      fontFamily: {
+        quicksand: "'Quicksand', sans-serif",
+      },
+      backgroundColor: {
+        jingga: "#F7832E",
+      },
+    },
+  },
+  plugins: [],
+};
