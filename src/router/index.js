@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import animeInfo from "../views/Animeinfo.vue";
 import mangaInfo from "../views/Mangainfo.vue";
+import Search from "../views/Search.vue";
 const routes = [
   {
     path: "/",
@@ -26,6 +27,14 @@ const routes = [
     path: "/animeinfo/:anime",
     name: "animeInfo",
     component: animeInfo,
+    meta: {
+      title: "Loading...",
+    },
+  },
+  {
+    path: "/search?q=:search",
+    name: "search",
+    component: Search,
     meta: {
       title: "Loading...",
     },

@@ -58,16 +58,18 @@
                   class="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs"
                   >Rank #{{ anime.rank }}</a
                 >
-                <router-link
-                  :to="{
-                    name: 'animeInfo',
-                    params: { anime: anime.mal_id },
-                  }"
+                <a
+                  :href="
+                    $router.resolve({
+                      name: 'animeInfo',
+                      params: { anime: anime.mal_id },
+                    }).href
+                  "
                 >
                   <h2 class="mt-2 text-sm font-bold" :title="anime.title">
                     {{ anime.title }}
                   </h2>
-                </router-link>
+                </a>
                 <div class="space-y-4">
                   <p class="text-xs font-medium">
                     will be broadcast on {{ anime.type }}
@@ -124,16 +126,18 @@
                   class="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs"
                   >Rank #{{ anime.rank }}</a
                 >
-                <router-link
-                  :to="{
-                    name: 'animeInfo',
-                    params: { anime: anime.mal_id },
-                  }"
+                <a
+                  :href="
+                    $router.resolve({
+                      name: 'animeInfo',
+                      params: { anime: anime.mal_id },
+                    }).href
+                  "
                 >
                   <h2 class="mt-2 text-sm font-bold" :title="anime.title">
                     {{ anime.title }}
                   </h2>
-                </router-link>
+                </a>
                 <div class="space-y-4">
                   <p class="text-xs font-medium">
                     will be broadcast on {{ anime.type }}

@@ -168,13 +168,13 @@
             this.types = response.data.type;
             this.demographics = response.data.demographics;
             document.title =
-              "Luwibu - " +
               this.title +
               " : " +
               this.title_eng +
               " : " +
               this.title_jpn +
-              " (Manga)";
+              " (Manga)" +
+              " - Luwibu";
           })
           .catch((error) => {
             console.log(error);
@@ -214,13 +214,13 @@
           this.types = response.data.type;
           this.demographics = response.data.demographics;
           document.title =
-            "Luwibu - " +
             this.title +
             " : " +
             this.title_eng +
             " : " +
             this.title_jpn +
-            " (Manga)";
+            " (Manga)" +
+            " - Luwibu";
         })
         .catch((error) => {
           console.log(error);

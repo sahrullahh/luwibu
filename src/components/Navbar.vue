@@ -10,6 +10,7 @@
             type="search"
             v-model="searchAnime"
             @keyup="searchFunc"
+            @keyup.enter="searchQuery"
             placeholder="Search anime or manga.."
             class="input-search p-2 rounded-sm w-72 box-border outline-none text-xs ml-4 border"
           />
@@ -17,7 +18,7 @@
         <div class="flex gap-5 text-white text-sm mt-1">
           <router-link to="/">Home</router-link>
           <router-link to="/">Release</router-link>
-          <router-link to="/">Waifu</router-link>
+          <router-link to="/">Character</router-link>
           <router-link to="/">Anime</router-link>
           <router-link to="/">Manga</router-link>
         </div>
@@ -46,14 +47,16 @@
           </div>
           <div class="">
             <h2 class="text-sm font-bold truncate box-border">
-              <router-link
-                :to="{
-                  name: 'animeInfo',
-                  params: { anime: search.mal_id },
-                }"
+              <a
+                :href="
+                  $router.resolve({
+                    name: 'animeInfo',
+                    params: { anime: search.mal_id },
+                  }).href
+                "
               >
                 {{ search.title }}
-              </router-link>
+              </a>
             </h2>
             <p class="text-xs">
               <i class="text-yellow-500"><fa :icon="['fas', 'star']" /></i>
@@ -78,14 +81,16 @@
           </div>
           <div class="">
             <h2 class="text-sm font-bold truncate box-border">
-              <router-link
-                :to="{
-                  name: 'mangaInfo',
-                  params: { manga: search.mal_id },
-                }"
+              <a
+                :href="
+                  $router.resolve({
+                    name: 'mangaInfo',
+                    params: { manga: search.mal_id },
+                  }).href
+                "
               >
                 {{ search.title }}
-              </router-link>
+              </a>
             </h2>
             <p class="text-xs">
               <i class="text-yellow-500"><fa :icon="['fas', 'star']" /></i>
@@ -111,6 +116,12 @@
       };
     },
     methods: {
+      searchQuery: function () {
+        this.$router.push({
+          name: "search",
+          params: { search: `${this.searchAnime}` },
+        }).href;
+      },
       searchFunc: function () {
         console.clear();
         axios

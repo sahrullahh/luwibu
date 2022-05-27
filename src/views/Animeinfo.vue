@@ -116,6 +116,7 @@
                 <img
                   :src="item.image_url"
                   :alt="item.name"
+                  class="border-gray-500"
                   :title="item.name"
                 />
                 <h2 class="text-lg font-bold">{{ item.name }}</h2>
@@ -132,7 +133,6 @@
 
 <script>
   import Plyr from "plyr";
-
   import getVideoId from "get-video-id";
   import axios from "axios";
   const baseURL = "https://api.jikan.moe/v3/";
@@ -170,6 +170,7 @@
     watch: {
       $route: function () {
         const player = new Plyr("#player");
+
         axios
           .get(`${baseURL}anime/${this.$route.params.anime}`)
           .then((response) => {
@@ -196,13 +197,13 @@
             this.types = response.data.type;
             this.background = response.data.background;
             document.title =
-              "Luwibu - " +
               this.title +
               " : " +
               this.title_eng +
               " : " +
               this.title_jpn +
-              " (Anime)";
+              " (Anime)" +
+              " - Luwibu";
             this.demographics = response.data.demographics;
             let embedVideo = getVideoId(response.data.trailer_url);
             this.embed = "https://www.youtube.com/embed/" + embedVideo.id;
@@ -222,6 +223,9 @@
     },
     mounted() {
       const player = new Plyr("#player");
+      window.player = player;
+
+      // Bind event listener
 
       axios
         .get(`${baseURL}anime/${this.$route.params.anime}`)
@@ -249,13 +253,13 @@
           this.background = response.data.background;
           this.types = response.data.type;
           document.title =
-            "Luwibu - " +
             this.title +
             " : " +
             this.title_eng +
             " : " +
             this.title_jpn +
-            " (Anime)";
+            " (Anime)" +
+            " - Luwibu";
           this.demographics = response.data.demographics;
           let embedVideo = getVideoId(response.data.trailer_url);
           this.embed = "https://www.youtube.com/embed/" + embedVideo.id;
