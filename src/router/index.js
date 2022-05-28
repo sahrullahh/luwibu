@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import animeInfo from "../views/Animeinfo.vue";
 import mangaInfo from "../views/Mangainfo.vue";
 import Search from "../views/Search.vue";
+import mangaDetail from "../views/MangaDetail.vue";
 const routes = [
   {
     path: "/",
@@ -43,6 +44,14 @@ const routes = [
     path: "/mangainfo/:manga",
     name: "mangaInfo",
     component: mangaInfo,
+    meta: {
+      title: "Loading...",
+    },
+  },
+  {
+    path: "/manga-detail/:mangadetail",
+    name: "mangaDetail",
+    component: mangaDetail,
     meta: {
       title: "Loading...",
     },

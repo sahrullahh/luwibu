@@ -11,6 +11,13 @@
             :alt="this.title"
             class="border lg:ml-0 ml-4"
           />
+          <button
+            class="btn bg-jingga text-xs py-2 px-5 rounded-sm mt-5 font-bold text-white"
+            @click="toManga"
+          >
+            Baca komik {{ this.title }}
+            <i class="ml-2"><fa :icon="['fas', 'book']" /></i>
+          </button>
           <div class="space-y-4 text-xs mt-4 font-medium lg:ml-0 ml-4">
             <p class="text-normal">Rank : #{{ this.rank }}</p>
             <p class="text-normal">Volume : {{ this.volume }}</p>
@@ -142,6 +149,14 @@
         demographics: [],
         characters: [],
       };
+    },
+    methods: {
+      toManga: function () {
+        this.$router.push({
+          name: "mangaDetail",
+          params: { mangadetail: `${this.title}` },
+        }).href;
+      },
     },
     watch: {
       $route: function () {
